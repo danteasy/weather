@@ -112,7 +112,7 @@ async function hourlyWeather(location) {
     const userIp = await fetch("https://api.ipify.org?format=json")
         .then((res) => res.json())
         .then((data) => data.ip);
-    fetch("http://ip-api.com/json/" + userIp)
+    fetch("https://ip-api.com/json/" + userIp)
         .then((res) => {
             if (res.ok) return res.json();
         })

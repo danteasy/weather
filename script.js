@@ -112,13 +112,14 @@ async function hourlyWeather(location) {
     const userIp = await fetch("https://api.ipify.org?format=json")
         .then((res) => res.json())
         .then((data) => data.ip);
-    fetch("https://ip-api.com/json/" + userIp)
+
+    fetch("https://freeipapi.com/api/json/" + userIp)
         .then((res) => {
             if (res.ok) return res.json();
         })
         .then((data) => {
-            let locationRequest = data.country + " " + data.city;
-            getWeather(locationRequest);
+            let userLocation = data.countryName + " " + data.cityName;
+            getWeather(userLocation);
         })
         .catch((err) => console.log(err));
 })();
